@@ -7,8 +7,10 @@ public abstract class AbsBasePage<T> extends AbsBaseUtils {
     public AbsBasePage(WebDriver driver){
         super(driver);
     }
-
-  public AbsBasePage open(){
+    private final String BASE_URL=System.getProperty("base.url","https://otus.ru");
+//private String getPath(){    return BASE_URL.toString().endsWith("/")?"":"/";}
+  public AbsBasePage open(String path){
+        driver.get(BASE_URL+path);
         return this;
   }
   }
