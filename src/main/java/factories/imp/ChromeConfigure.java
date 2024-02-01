@@ -9,6 +9,8 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ChromeConfigure implements IBrowserSettings{
 private String browserVersion= System.getProperty("browser.version");
+
+
     @Override
     public WebDriver configure() {
         ChromeOptions chromeOptions = new ChromeOptions();

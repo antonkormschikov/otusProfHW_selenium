@@ -23,8 +23,8 @@ public class Test1_Test {
     @Test
     public void findCourseTest(){
       mainPage
-          .open("/")
-          .findCourse("Специализация сетевой инженер");
+          .open("/");
+          mainPage.findCourse("Специализация сетевой инженер");
 
 
 
