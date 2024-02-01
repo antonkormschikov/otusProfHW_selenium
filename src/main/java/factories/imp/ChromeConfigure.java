@@ -12,7 +12,7 @@ private String browserVersion= System.getProperty("browser.version");
     @Override
     public WebDriver configure() {
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--start-fullscreen");
+        chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("--homepage-about:blank");
         WebDriverManager.chromedriver().browserVersion(browserVersion).setup();
         return new ChromeDriver(chromeOptions);

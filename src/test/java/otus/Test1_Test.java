@@ -1,43 +1,32 @@
 package otus;
 
-import factories.WebDriverFactory;
-import io.github.bonigarcia.wdm.WebDriverManager;
+import annotations.Driver;
+import annotations.Page;
+import extensions.UIExtensions;
 import listeners.WebDriverListener;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
 import pages.MainPage;
 
+@ExtendWith(UIExtensions.class)
 public class Test1_Test {
-
+    @Driver
     private WebDriver driver;
-    private WebDriverListener listener;
 
-    @BeforeAll
-    public static void manager(){
-        WebDriverManager.chromedriver().setup();
-    }
-    @BeforeEach
-    public void init(){
-        driver=new WebDriverFactory().create();
-        //listener = new WebDriverListener().beforeClickOn();
-    }
-    @AfterEach
-    public void close(){
-        if (driver!=null){
-            driver.close();
-            driver.quit();
-        }
-    }
+    //private WebDriverListener listener;
+    @Page
+    private MainPage mainPage;
+
+
 
     @Test
     public void findCourseTest(){
-        MainPage mainPage = new MainPage(driver);
-        mainPage.open("/");
-        mainPage.findCourse("Специализация сетевой инженер")
-                .click();
+      mainPage
+          .open("/")
+          .findCourse("Специализация сетевой инженер");
+
+
 
     }
 }

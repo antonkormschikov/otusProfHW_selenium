@@ -13,11 +13,7 @@ public class MainPage extends AbsBasePage{
       //  WebElement element = driver.findElement(By.xpath())
         return this;
     }
-    public MainPage clickTitle(){
-        return this;
-    }
-
-        public WebElement findCourse(String courseName){
+    public WebElement findCourse(String courseName){
         WebElement element = driver.findElement(By.xpath(String.format("//div[div/h5[text()='%s']]",courseName)));
         return element;
     }
