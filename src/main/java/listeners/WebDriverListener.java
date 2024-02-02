@@ -1,7 +1,5 @@
 package listeners;
 
-
-
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.events.WebDriverEventListener;
 
@@ -79,7 +77,7 @@ public class WebDriverListener implements WebDriverEventListener {
 
     @Override
     public void beforeClickOn(WebElement element, WebDriver driver) {
-        ((JavascriptExecutor)driver).executeScript("argument[0].style.border='3px solid red';");
+        ((JavascriptExecutor)driver).executeScript("argument[0].style.border='3px solid red';",element);
     }
 
     @Override
@@ -141,4 +139,5 @@ public class WebDriverListener implements WebDriverEventListener {
     public void afterGetText(WebElement webElement, WebDriver webDriver, String s) {
 
     }
+
 }

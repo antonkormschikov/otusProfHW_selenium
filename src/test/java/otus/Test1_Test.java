@@ -11,6 +11,7 @@ import pages.MainPage;
 
 @ExtendWith(UIExtensions.class)
 public class Test1_Test {
+
     @Driver
     private WebDriver driver;
 
@@ -18,13 +19,12 @@ public class Test1_Test {
     @Page
     private MainPage mainPage;
 
-
-
     @Test
     public void findCourseTest(){
       mainPage
           .open("/");
-          mainPage.findCourse("Специализация сетевой инженер");
+          mainPage.findCourse("Специализация сетевой инженер")
+                  .click();
 
 
 

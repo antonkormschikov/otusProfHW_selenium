@@ -59,7 +59,6 @@
     <profiles>
         <profile>
             <id>prod</id>
-
             <properties>
                 <base.url>https://otus.ru</base.url>
             </properties>
@@ -109,7 +108,7 @@
                 <version>${maven.checkstyle.plugin.version}</version>
                 <configuration>
                     <includeTestSourceDirectory>true</includeTestSourceDirectory>
-                    <configLocation>S{project.build.sourceDirectory}/../resources/checkstyle.xml</configLocation>
+                    <configLocation>${project.build.sourceDirectory}/../resources/checkstyle.xml</configLocation>
                 </configuration>
                 <executions>
                     <execution>

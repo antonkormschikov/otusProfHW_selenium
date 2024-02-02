@@ -16,6 +16,8 @@ private String browserVersion= System.getProperty("browser.version");
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.addArguments("--start-maximized");
         chromeOptions.addArguments("--homepage-about:blank");
+        Config config=WebDriverManager.getInstance(DriverManagerType.CHROME)
+                .config().setChromeVersion(browserVersion);
         WebDriverManager.chromedriver().browserVersion(browserVersion).setup();
         return new ChromeDriver(chromeOptions);
     }
