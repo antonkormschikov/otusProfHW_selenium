@@ -8,17 +8,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ChromeConfigure implements IBrowserSettings{
-private String browserVersion= System.getProperty("browser.version");
+  private String browserVersion= System.getProperty("browser.version");
 
 
-    @Override
+  @Override
     public WebDriver configure() {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--start-maximized");
-        chromeOptions.addArguments("--homepage-about:blank");
-        Config config=WebDriverManager.getInstance(DriverManagerType.CHROME)
-                .config().setChromeVersion(browserVersion);
-        WebDriverManager.chromedriver().browserVersion(browserVersion).setup();
-        return new ChromeDriver(chromeOptions);
-    }
+    Config config=WebDriverManager.getInstance(DriverManagerType.CHROME)
+          .config().setChromeVersion(browserVersion);
+    WebDriverManager.chromedriver().browserVersion(browserVersion).setup();
+    ChromeOptions chromeOptions = new ChromeOptions();
+    chromeOptions.addArguments("--ignore-certificate-errors");
+    chromeOptions.addArguments("--start-maximized");
+    chromeOptions.addArguments("--homepage-about:blank");
+    chromeOptions.addArguments("--remote-allow-origins=*");
+
+    return new ChromeDriver(chromeOptions);
+  }
 }
