@@ -1,9 +1,14 @@
 package pages;
 
+import exeptions.NoFoundCourseExeption;
 import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+
+import java.util.List;
+import java.util.Objects;
 
 public class MainPage extends AbsBasePage{
 
@@ -16,9 +21,24 @@ public class MainPage extends AbsBasePage{
     WebElement element = driver.findElement(By.xpath("//h1"));
     Assertions.assertEquals(courseName,element.getText());
   }
-  public MainPage findCourse(String courseName){
-    WebElement element = driver.findElement(By.xpath(String.format("//div[div/h5[text()='%s']]",courseName)));
-    element.click();
-    return this;
+  public void findCourse(List<WebElement> list,String courseName){
+    boolean findCourceIsTrue=false;
+    for (WebElement element:list) {
+      if (element.getText().equals(courseName)){
+        new Actions(driver).moveToElement(element)
+                .click()
+                .perform();
+        checkTitle(courseName);
+      }
+      throw new NoFoundCourseExeption(courseName);
+    }
+
+
   }
+  public List<WebElement> readCourses(){
+    List<WebElement> listElements = driver.findElements("");
+    return listElements;
+
+  }
+
 }
