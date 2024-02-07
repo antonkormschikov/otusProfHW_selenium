@@ -1,5 +1,5 @@
 package factories;
 
 public interface IPage<T> {
-    T create();
+    T newPage();
 }

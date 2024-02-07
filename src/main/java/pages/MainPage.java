@@ -17,27 +17,24 @@ public class MainPage extends AbsBasePage{
     super(driver);
   }
 
-  public void checkTitle(String courseName){
-    WebElement element = driver.findElement(By.xpath("//h1"));
-    Assertions.assertEquals(courseName,element.getText());
-  }
-  public void findCourse(List<WebElement> list,String courseName){
-    boolean findCourceIsTrue=false;
-    for (WebElement element:list) {
-      if (element.getText().equals(courseName)){
-        new Actions(driver).moveToElement(element)
-                .click()
-                .perform();
-        checkTitle(courseName);
-      }
-      throw new NoFoundCourseExeption(courseName);
-    }
 
 
+
+  public CoursePage findCourse(String courseName){
+    String courseLocator=String.format("//div[a/div/div/div/div/h5[text()='%s']]",courseName);
+    WebElement element = driver.findElement(By.xpath(courseLocator));
+
+    if  (element  !=null) {
+      new Actions(driver).moveToElement(element)
+              .click()
+              .build()
+              .perform();
+      return new CoursePage(driver);
+    }throw new NoFoundCourseExeption(courseName);
   }
   public List<WebElement> readCourses(){
-    List<WebElement> listElements = driver.findElements("");
-    return listElements;
+    List<WebElement> listLinksElements = driver.findElements(By.xpath("//a[div/div/div/div/h5]"));
+    return listLinksElements;
 
   }
 
