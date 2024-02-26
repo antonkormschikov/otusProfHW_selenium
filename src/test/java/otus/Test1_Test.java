@@ -3,6 +3,8 @@ package otus;
 import annotations.Driver;
 import annotations.Page;
 import extensions.UIExtensions;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +16,7 @@ import java.util.List;
 
 @ExtendWith(UIExtensions.class)
 public class Test1_Test {
+private Logger logger = (Logger) LogManager.getLogger(Test1_Test.class);
 @Driver
 private WebDriver driver;
 
@@ -32,11 +35,19 @@ private CoursePage coursePage;
   Реализовать движение мыши при помощи и выбор курса при помощи библиотеки Actions*/
 
   @Test
-    public void findCourseTest(){
-    ((MainPage)mainPage.open("/"))
-                       .findCourse("Apache Kafka")
-                       .checkTitle("Apache Kafka");
+  public void findCourseTest() {
+    ((MainPage) mainPage.open("/"))
+            .findCourse("Apache Kafka")
+            .checkTitle("Apache Kafka");
+  }
+  @Test
+  public void checkLastStartedCourseTest(){
+      ((MainPage)mainPage.open("/"))
+              .readCoursesAndFindLastStarted()
+              .assertCourseLastStartDate();
 
+
+    }
 
 
 

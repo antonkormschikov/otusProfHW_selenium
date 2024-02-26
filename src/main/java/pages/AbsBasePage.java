@@ -4,6 +4,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.PageFactory;
 import utils.AbsBaseUtils;
 
+import java.time.LocalDate;
+
 public abstract class AbsBasePage<T> extends AbsBaseUtils {
   private WebDriver driver;
   public AbsBasePage(WebDriver driver){
@@ -15,6 +17,28 @@ public abstract class AbsBasePage<T> extends AbsBaseUtils {
     String a=baseUrl+path;
     driver.get(a);
     return (T)this;
+  }
+
+  public LocalDate convertDate(String srcDate){
+    String[] monthNames = { "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря" };
+    int month=0;
+    int day=Integer.parseInt(srcDate.split(" ")[0]);
+    int i=0;
+    while (i< monthNames.length){
+      if (srcDate.split(" ")[1].equals(monthNames[i])){
+        break;
+      } else {i++;}
+    }
+    month=i+1;
+    LocalDate localDate ;
+    if ((month==1||month==2||month==3)
+            &&(LocalDate.now().getMonthValue()==12||LocalDate.now().getMonthValue()==11||LocalDate.now().getMonthValue()==10))
+    {
+      localDate=LocalDate.of(LocalDate.now().getYear()+1,month,day);
+
+    } else {localDate=LocalDate.of(LocalDate.now().getYear(),month,day);}
+
+    return localDate;
   }
 }
 
