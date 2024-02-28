@@ -20,7 +20,7 @@ public class CoursePage extends AbsBasePage{
 
 
     public void assertCourseLastStartDate(){
-        WebElement element = driver.findElement(By.xpath("какая-то дата"));
+        WebElement element = driver.findElement(By.xpath("//main/div/section/div/div/div[1]/p"));
         Assertions.assertTrue(convertDate(element.getText()).isAfter(LocalDate.now()));
 
 

@@ -2,6 +2,7 @@ package extensions;
 import annotations.Driver;
 import factories.WebDriverFactory;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.extension.AfterEachCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
@@ -17,6 +18,8 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
 
   @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
+      WebDriverManager.chromedriver().setup();
+      WebDriverManager.firefoxdriver().setup();
     driver = new WebDriverFactory().create();
     Set<Field> fildsToInject = getAnnotatedFields(Driver.class, extensionContext);
     for (Field field: fildsToInject) {

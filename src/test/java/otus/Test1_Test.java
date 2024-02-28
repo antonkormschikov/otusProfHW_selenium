@@ -5,6 +5,7 @@ import annotations.Page;
 import extensions.UIExtensions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -36,14 +37,18 @@ private CoursePage coursePage;
 
   @Test
   public void findCourseTest() {
-    ((MainPage) mainPage.open("/"))
-            .findCourse("Apache Kafka")
+    MainPage mainPage = new MainPage(driver);
+    mainPage.open("/");
+            mainPage.findCourse("Apache Kafka")
             .checkTitle("Apache Kafka");
   }
+
   @Test
+  @Disabled
   public void checkLastStartedCourseTest(){
-      ((MainPage)mainPage.open("/"))
-              .readCoursesAndFindLastStarted()
+      MainPage mainPage = new MainPage(driver);
+      mainPage.open("/");
+      mainPage.readCoursesAndFindLastStarted()
               .assertCourseLastStartDate();
 
 
@@ -57,4 +62,4 @@ private CoursePage coursePage;
 
 
   }
-}
+

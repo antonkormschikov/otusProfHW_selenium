@@ -8,14 +8,14 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ChromeConfigure implements IBrowserSettings{
-  private String browserVersion= System.getProperty("browser.version");
+  //private String browserVersion= System.getProperty("browser.version");
 
 
   @Override
     public WebDriver configure() {
-    Config config=WebDriverManager.getInstance(DriverManagerType.CHROME)
-          .config().setChromeVersion(browserVersion);
-    WebDriverManager.chromedriver().browserVersion(browserVersion).setup();
+    //Config config=WebDriverManager.getInstance(DriverManagerType.CHROME);
+         // .config().setChromeVersion(browserVersion);
+   // WebDriverManager.chromedriver().browserVersion(browserVersion).setup();
     ChromeOptions chromeOptions = new ChromeOptions();
     chromeOptions.addArguments("--ignore-certificate-errors");
     chromeOptions.addArguments("--start-maximized");

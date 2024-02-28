@@ -13,10 +13,10 @@ public abstract class AbsBasePage<T> extends AbsBaseUtils {
    // PageFactory.initElements(driver,this);
       }
   private final String baseUrl=System.getProperty("base.url","https://otus.ru");
-  public T open(String path) {
+  public void open(String path) {
     String a=baseUrl+path;
     driver.get(a);
-    return (T)this;
+
   }
 
   public LocalDate convertDate(String srcDate){
