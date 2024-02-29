@@ -1,17 +1,15 @@
 package pages;
 
+import annotations.Driver;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.PageFactory;
 import utils.AbsBaseUtils;
-
 import java.time.LocalDate;
 
 public abstract class AbsBasePage<T> extends AbsBaseUtils {
-  private WebDriver driver;
-  public AbsBasePage(WebDriver driver){
+    public AbsBasePage(WebDriver driver) {
     super(driver);
-   // PageFactory.initElements(driver,this);
-      }
+  }
+
   private final String baseUrl=System.getProperty("base.url","https://otus.ru");
   public void open(String path) {
     String a=baseUrl+path;

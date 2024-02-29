@@ -15,12 +15,11 @@ import java.util.stream.Stream;
 
 public class MainPage extends AbsBasePage{
 
-  protected WebDriver driver;
   public MainPage(WebDriver driver){
     super(driver);
   }
   /////////!!!!!!!!!!!!!!!!!!!!!!!проверить локатор
-    private final String dateLocatorTemplate="//a[href=@href='%s']/div/div/div/div/span[1]";
+    private final String dateLocatorTemplate="//a[@href='%s']/div/div/div/div/span[1]";
 
   public CoursePage findCourse(String courseName){
     String courseLocator=String.format("//div[a/div/div/div/div/h5[text()='%s']]", courseName);

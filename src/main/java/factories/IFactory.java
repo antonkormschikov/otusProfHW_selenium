@@ -1,5 +1,7 @@
 package factories;
 
-public interface IFactory<T> {
-  T create();
+import org.openqa.selenium.WebDriver;
+
+public interface IFactory {
+  WebDriver create();
 }

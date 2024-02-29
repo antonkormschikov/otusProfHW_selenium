@@ -9,17 +9,14 @@ import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import pages.CoursePage;
 import pages.MainPage;
-
-import java.util.List;
 
 @ExtendWith(UIExtensions.class)
 public class Test1_Test {
 private Logger logger = (Logger) LogManager.getLogger(Test1_Test.class);
 @Driver
-private WebDriver driver;
+WebDriver driver;
 
 @Page
 private MainPage mainPage;
@@ -36,6 +33,7 @@ private CoursePage coursePage;
   Реализовать движение мыши при помощи и выбор курса при помощи библиотеки Actions*/
 
   @Test
+  @Disabled
   public void findCourseTest() {
     MainPage mainPage = new MainPage(driver);
     mainPage.open("/");
@@ -44,7 +42,6 @@ private CoursePage coursePage;
   }
 
   @Test
-  @Disabled
   public void checkLastStartedCourseTest(){
       MainPage mainPage = new MainPage(driver);
       mainPage.open("/");

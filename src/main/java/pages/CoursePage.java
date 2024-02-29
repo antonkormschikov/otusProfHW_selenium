@@ -8,7 +8,6 @@ import org.openqa.selenium.WebElement;
 import java.time.LocalDate;
 
 public class CoursePage extends AbsBasePage{
-    protected WebDriver driver;
 
     public CoursePage(WebDriver driver) {
         super(driver);

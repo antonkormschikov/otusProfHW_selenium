@@ -13,6 +13,7 @@ public class FireFoxConfigure implements IBrowserSettings{
   private String browserVersion= System.getProperty("browser.version");
   @Override
     public WebDriver configure() {
+    WebDriverManager.firefoxdriver().setup();
     Config config=WebDriverManager.getInstance(DriverManagerType.CHROME).config().setFirefoxVersion(browserVersion);
     WebDriverManager.firefoxdriver().browserVersion(browserVersion).setup();
     FirefoxOptions firefoxOptions = new FirefoxOptions();
