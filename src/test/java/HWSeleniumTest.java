@@ -1,11 +1,8 @@
-package otus;
-
 import annotations.Driver;
 import annotations.Page;
 import extensions.UIExtensions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
@@ -13,17 +10,17 @@ import pages.CoursePage;
 import pages.MainPage;
 
 @ExtendWith(UIExtensions.class)
-public class Test1_Test {
-private Logger logger = (Logger) LogManager.getLogger(Test1_Test.class);
-@Driver
-WebDriver driver;
+public class HWSeleniumTest {
+  private Logger logger = (Logger) LogManager.getLogger(HWSeleniumTest.class);
+  @Driver
+  WebDriver driver;
 
-@Page
-private MainPage mainPage;
-@Page
-private CoursePage coursePage;
+  @Page
+  private MainPage mainPage;
+  @Page
+  private CoursePage coursePage;
 
-/*  Необходимо создать проект в Maven'e и реализовать:
+  /*Необходимо создать проект в Maven'e и реализовать:
   Фабрику (WebDriverFactory), которая будет получать значение из окружения и запускать соответствующий браузер
   Браузеры: Chrome, Firefox, Opera
   Реализовать подсветку элементов перед нажатием, после нажатия вернуть данные в исходное состояние
@@ -33,30 +30,19 @@ private CoursePage coursePage;
   Реализовать движение мыши при помощи и выбор курса при помощи библиотеки Actions*/
 
   @Test
-  @Disabled
   public void findCourseTest() {
     MainPage mainPage = new MainPage(driver);
     mainPage.open("/");
-            mainPage.findCourse("Apache Kafka")
+    mainPage.findCourse("Apache Kafka")
             .checkTitle("Apache Kafka");
   }
 
   @Test
   public void checkLastStartedCourseTest(){
-      MainPage mainPage = new MainPage(driver);
-      mainPage.open("/");
-      mainPage.readCoursesAndFindLastStarted()
+    MainPage mainPage = new MainPage(driver);
+    mainPage.open("/");
+    mainPage.readCoursesAndFindLastStarted()
               .assertCourseLastStartDate();
-
-
-    }
-
-
-
-
-
-
-
-
   }
+}
 

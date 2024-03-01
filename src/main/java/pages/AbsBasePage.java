@@ -1,15 +1,17 @@
 package pages;
 
 import annotations.Driver;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.WebDriver;
 import utils.AbsBaseUtils;
 import java.time.LocalDate;
 
 public abstract class AbsBasePage<T> extends AbsBaseUtils {
-    public AbsBasePage(WebDriver driver) {
+  public AbsBasePage(WebDriver driver) {
     super(driver);
   }
-
+  private Logger logger = (Logger) LogManager.getLogger(AbsBasePage.class);
   private final String baseUrl=System.getProperty("base.url","https://otus.ru");
   public void open(String path) {
     String a=baseUrl+path;
@@ -28,7 +30,7 @@ public abstract class AbsBasePage<T> extends AbsBaseUtils {
       } else {i++;}
     }
     month=i+1;
-    LocalDate localDate ;
+    LocalDate localDate;
     if ((month==1||month==2||month==3)
             &&(LocalDate.now().getMonthValue()==12||LocalDate.now().getMonthValue()==11||LocalDate.now().getMonthValue()==10))
     {

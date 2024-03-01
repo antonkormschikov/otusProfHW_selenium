@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>8</maven.compiler.source>
-        <maven.compiler.target>8</maven.compiler.target>
+        <maven.compiler.source>16</maven.compiler.source>
+        <maven.compiler.target>16</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.1</junit.version>
         <selenium.version>4.18.1</selenium.version>
@@ -25,7 +25,7 @@
         <browser.version>122</browser.version>
         <log4j-core.version>2.17.1</log4j-core.version>
         <log4j-slf4j2.version>2.20.0</log4j-slf4j2.version>
-
+        <reflections.version>0.9.12</reflections.version>
     </properties>
 
     <dependencies><dependency>
@@ -41,13 +41,14 @@
         <dependency>
             <groupId>org.reflections</groupId>
             <artifactId>reflections</artifactId>
-            <version>0.9.12</version>
+            <version>${reflections.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
+
         </dependency>
 
         <dependency>
@@ -89,8 +90,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${mavenCompilerPlugin.version}</version>
                 <configuration>
-                    <source>10</source>
-                    <target>10</target>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
                     <showDeprecation>false</showDeprecation>
                 </configuration>
             </plugin>
@@ -127,5 +128,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>

@@ -12,7 +12,7 @@ public class WebDriverFactory {
   private String browserName = System.getProperty("browser","chrome").toLowerCase();
 
 
-    public WebDriver create() {
+  public WebDriver create() {
     switch (browserName){
       case "chrome":{
         return new EventFiringDecorator<>(new OnClickOnListener()).decorate(new ChromeConfigure().configure());

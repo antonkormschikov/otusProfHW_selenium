@@ -6,10 +6,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.WebDriverListener;
 
 public class OnClickOnListener implements WebDriverListener {
-private WebDriver driver;
+  private WebDriver driver;
 
-    @Override
+  @Override
     public void beforeClick(WebElement element) {
-      ((JavascriptExecutor)driver).executeScript("argument[0].style.border='3px solid red';",element);
-    }
+    ((JavascriptExecutor)driver).executeScript("argument[0].style.border='3px solid red';",element);
+  }
 }

@@ -13,10 +13,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
- private WebDriver driver;
+  private WebDriver driver;
 
   @Override
-  public void beforeEach(ExtensionContext extensionContext) throws Exception {
+    public void beforeEach(ExtensionContext extensionContext) throws Exception {
     driver = new WebDriverFactory().create();
 
     var fildsToInject = getAnnotatedFields(Driver.class, extensionContext);
