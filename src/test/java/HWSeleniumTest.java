@@ -4,8 +4,12 @@ import extensions.UIExtensions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.condition.DisabledIf;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import pages.CoursePage;
 import pages.MainPage;
 
@@ -15,10 +19,8 @@ public class HWSeleniumTest {
   @Driver
   WebDriver driver;
 
-  @Page
-  private MainPage mainPage;
-  @Page
-  private CoursePage coursePage;
+  //@Page  private MainPage mainPage;
+  //@Page   private CoursePage coursePage;
 
   /*Необходимо создать проект в Maven'e и реализовать:
   Фабрику (WebDriverFactory), которая будет получать значение из окружения и запускать соответствующий браузер
@@ -44,5 +46,16 @@ public class HWSeleniumTest {
     mainPage.readCoursesAndFindLastStarted()
               .assertCourseLastStartDate();
   }
+
+  @Test
+  public void check() throws InterruptedException {
+    MainPage mainPage = new MainPage(driver);
+    mainPage.open("/");
+    WebElement element = driver.findElement(By.xpath("//a[div/div/div/div/h5]/div/div"));
+    ((JavascriptExecutor)driver).executeScript("argument[0].setAttribute('style','{border:\'3px solid red\'}');",element);
+    Thread.sleep(5000);
+  }
+
+
 }
 

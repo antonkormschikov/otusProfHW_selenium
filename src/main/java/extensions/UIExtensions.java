@@ -19,10 +19,7 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
     driver = new WebDriverFactory().create();
 
-    var fildsToInject = getAnnotatedFields(Driver.class, extensionContext);
-
-
-
+    Set<Field> fildsToInject = getAnnotatedFields(Driver.class, extensionContext);
 
     for (Field field: fildsToInject) {
       if (field.getType().getName().equals(WebDriver.class.getName())){
@@ -46,7 +43,7 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
   @Override
   public void afterEach(ExtensionContext extensionContext) throws Exception {
     if(driver !=null){
-      driver.close();
+      //driver.close();
       driver.quit();
     }
   }

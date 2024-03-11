@@ -43,10 +43,14 @@ public class MainPage extends AbsBasePage{
     List<WebElement> elements = driver.findElements(By.xpath("//a[div/div/div/div/h5]"));
 
     for (WebElement element: elements){
-      link=element.getAttribute("href");
-      dateElement=driver.findElement(By.xpath(String.format(dateLocatorTemplate,link))).getText();
-      localDate=convertDate(dateElement.split(" ")[1]+" "+dateElement.split(" ")[2]);
-      ldList.add(new LinkAndDate(link,localDate));
+      try {
+        link = element.getAttribute("href");
+        dateElement = driver.findElement(By.xpath(String.format(dateLocatorTemplate, link))).getText();
+        localDate = convertDate(dateElement.split(" ")[1] + " " + dateElement.split(" ")[2]);
+        ldList.add(new LinkAndDate(link, localDate));
+      } catch (RuntimeException e){
+        logger.info(e.toString());
+      }
     }
     if (ldList.size()>0){
       LinkAndDate ldLatestDate = ldList.stream()

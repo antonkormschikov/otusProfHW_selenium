@@ -7,4 +7,5 @@ public abstract class  AbsBaseUtils {
   public AbsBaseUtils(WebDriver driver){
     this.driver=driver;
   }
+
 }
