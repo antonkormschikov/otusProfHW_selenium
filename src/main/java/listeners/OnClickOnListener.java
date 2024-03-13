@@ -10,9 +10,8 @@ public class OnClickOnListener implements WebDriverListener {
   private WebDriver driver;
 
 
- /* @Override
+  @Override
   public void beforeClick(WebElement element) {
-    ((JavascriptExecutor)driver).executeScript(String.format("%s.style.border='3px solid red';",element));
-    //WebDriverListener.super.beforeClick(element);
-  }*/
+    ((JavascriptExecutor)driver).executeScript("arguments[0].style.border='3px solid red';",element);
+  }
 }

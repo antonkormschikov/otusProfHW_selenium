@@ -47,14 +47,15 @@ public class HWSeleniumTest {
               .assertCourseLastStartDate();
   }
 
-  @Test
+  /*@Test
   public void check() throws InterruptedException {
     MainPage mainPage = new MainPage(driver);
     mainPage.open("/");
     WebElement element = driver.findElement(By.xpath("//a[div/div/div/div/h5]/div/div"));
-    ((JavascriptExecutor)driver).executeScript("argument[0].setAttribute('style','{border:\'3px solid red\'}');",element);
+    JavascriptExecutor js = (JavascriptExecutor)driver;
+    js.executeScript("arguments[0].style.border='3px solid red'",element);
     Thread.sleep(5000);
-  }
+  }*/
 
 
 }
