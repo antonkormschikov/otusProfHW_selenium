@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>16</maven.compiler.source>
-        <maven.compiler.target>16</maven.compiler.target>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.10.1</junit.version>
         <selenium.version>4.18.1</selenium.version>
@@ -83,6 +83,12 @@
                         <browser>${browser}</browser>
                         <browser.version>${browser.version}</browser.version>
                     </systemProperties>
+                    <systemPropertyVariables>
+                    <configurationParameters>
+                        junit.jupiter.execution.parallel.enabled=true
+                        junit.jupiter.execution.parallel.mode.default=concurrent
+                    </configurationParameters>
+                    </systemPropertyVariables>
                 </configuration>
             </plugin>
             <plugin>
