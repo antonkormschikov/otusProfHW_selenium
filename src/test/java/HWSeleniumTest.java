@@ -35,8 +35,8 @@ public class HWSeleniumTest {
   public void findCourseTest() {
     MainPage mainPage = new MainPage(driver);
     mainPage.open("/");
-    mainPage.findCourse("Apache Kafka")
-            .checkTitle("Apache Kafka");
+    mainPage.findCourse("Системный аналитик. Team Lead")
+            .checkTitle("Системный аналитик. Team Lead");
   }
 
   @Test

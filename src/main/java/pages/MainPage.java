@@ -32,6 +32,7 @@ public class MainPage extends AbsBasePage{
               .click()
               .build()
               .perform();
+
       return new CoursePage(driver);
     }throw new NoFoundCourseExeption(courseName);
   }
