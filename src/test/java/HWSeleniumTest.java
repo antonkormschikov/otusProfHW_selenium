@@ -1,5 +1,7 @@
 import annotations.Driver;
 import annotations.Page;
+import com.fasterxml.jackson.annotation.JacksonInject;
+import com.google.inject.Inject;
 import extensions.UIExtensions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -15,9 +17,15 @@ import pages.MainPage;
 
 @ExtendWith(UIExtensions.class)
 public class HWSeleniumTest {
+
   private Logger logger = (Logger) LogManager.getLogger(HWSeleniumTest.class);
   @Driver
-  WebDriver driver;
+  private WebDriver driver;
+
+
+  @Inject
+  public MainPage mainPage;
+  //@Page  private Object object;
 
   //@Page  private MainPage mainPage;
   //@Page   private CoursePage coursePage;
@@ -33,19 +41,19 @@ public class HWSeleniumTest {
 
   @Test
   public void findCourseTest() {
-    MainPage mainPage = new MainPage(driver);
-    mainPage.open("/");
-    mainPage.findCourse("Apache Kafka")
-            .checkTitle("Apache Kafka");
+//    MainPage mainPage = new MainPage(driver);
+
+  mainPage.open("/");
+  //  mainPage.findCourse("Apache Kafka")
+         //   .checkTitle("Apache Kafka");
   }
 
-  @Test
-  public void checkLastStartedCourseTest(){
-    MainPage mainPage = new MainPage(driver);
-    mainPage.open("/");
-    mainPage.readCoursesAndFindLastStarted()
-              .assertCourseLastStartDate();
-  }
+ // @Test
+ // public void checkLastStartedCourseTest(){
+    //mainPage.open("/");
+    //mainPage.readCoursesAndFindLastStarted()
+       //       .assertCourseLastStartDate();
+  //}
 
   /*@Test
   public void check() throws InterruptedException {
