@@ -2,6 +2,7 @@ package extensions;
 import annotations.Driver;
 import annotations.Page;
 import com.google.inject.Guice;
+import com.google.inject.Module;
 import factories.PageFactory;
 import factories.WebDriverFactory;
 
@@ -17,8 +18,9 @@ import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UIExtensions implements BeforeEachCallback, AfterEachCallback, BeforeAllCallback {
+public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
   private WebDriver driver;
+
 
 
    @Override
@@ -33,15 +35,17 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback, Befo
       }
     }
 
-/*String clname = extensionContext.getTestClass();
+
     Set<Field> fildsToInjectPage = getAnnotatedFields(Page.class, extensionContext);
-     var object = new PageFactory().newPage(driver,extensionContext.getParent().toString());
+       String clname =null;
+     var object = new PageFactory().newPage(driver,"MainPage");
     for (Field field: fildsToInjectPage) {
+        var object = new PageFactory().newPage(driver,field.getType().getSimpleName());
     if (field.getType().getName().equals(object.getClass().getName())){
         field.setAccessible(true);
         field.set(extensionContext.getTestInstance().get(),object);
       }
-    }*/
+    }
 
   }
 
@@ -64,9 +68,4 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback, Befo
     }
   }
 
-
-    @Override
-    public void beforeAll(ExtensionContext extensionContext) throws Exception {
-        Guice.createInjector(new GuicePagesModule());
-    }
 }

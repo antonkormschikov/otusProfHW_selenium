@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.Driver;
 import annotations.Page;
 import com.google.common.util.concurrent.ClosingFuture;
 import com.google.inject.Inject;
@@ -19,15 +20,17 @@ import java.util.stream.Stream;
 
 public class MainPage extends AbsBasePage<MainPage>{
 
-  public MainPage(WebDriver driver)
-  {
+
+  public MainPage(WebDriver driver) {
     super(driver);
   }
-  @Inject
+  @Page
   private CoursePage coursePage;
 
   private Logger logger = (Logger) LogManager.getLogger(MainPage.class);
   private final String dateLocatorTemplate="//a[@href='%s']/div/div/div/div/span[1]";
+
+
 
   public CoursePage findCourse(String courseName){
     String courseLocator=String.format("//div[a/div/div/div/div/h5[text()='%s']]", courseName);

@@ -1,5 +1,6 @@
 package pages;
 
+import annotations.Driver;
 import com.google.inject.Inject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -13,7 +14,7 @@ import java.time.LocalDate;
 public class CoursePage extends AbsBasePage<CoursePage>{
   private Logger logger = (Logger) LogManager.getLogger(CoursePage.class);
 
-  @Inject
+
   public CoursePage(WebDriver driver) {
     super(driver);
  }

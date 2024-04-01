@@ -1,6 +1,7 @@
 package pages;
 
 import annotations.Driver;
+import com.google.inject.Inject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.openqa.selenium.WebDriver;
@@ -8,6 +9,7 @@ import utils.AbsBaseUtils;
 import java.time.LocalDate;
 
 public abstract class AbsBasePage<T> extends AbsBaseUtils {
+
   public AbsBasePage(WebDriver driver) {
     super(driver);
   }

@@ -23,13 +23,10 @@ public class HWSeleniumTest {
   private WebDriver driver;
 
 
-  @Inject
+  @Page
   private MainPage mainPage;
-
-  //@Page  private Object object;
-
-  //@Page  private MainPage mainPage;
-  //@Page   private CoursePage coursePage;
+  @Page
+  private CoursePage coursePage;
 
   /*Необходимо создать проект в Maven'e и реализовать:
   Фабрику (WebDriverFactory), которая будет получать значение из окружения и запускать соответствующий браузер
