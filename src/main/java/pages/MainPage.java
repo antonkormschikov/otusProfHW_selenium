@@ -1,6 +1,8 @@
 package pages;
 
+import annotations.Page;
 import com.google.common.util.concurrent.ClosingFuture;
+import com.google.inject.Inject;
 import exeptions.NoFoundCourseExeption;
 
 import org.apache.logging.log4j.LogManager;
@@ -15,11 +17,15 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class MainPage extends AbsBasePage{
+public class MainPage extends AbsBasePage<MainPage>{
 
-  public MainPage(WebDriver driver){
+  public MainPage(WebDriver driver)
+  {
     super(driver);
   }
+  @Inject
+  private CoursePage coursePage;
+
   private Logger logger = (Logger) LogManager.getLogger(MainPage.class);
   private final String dateLocatorTemplate="//a[@href='%s']/div/div/div/div/span[1]";
 
@@ -33,7 +39,7 @@ public class MainPage extends AbsBasePage{
               .build()
               .perform();
 
-      return new CoursePage(driver);
+      return coursePage;
     }throw new NoFoundCourseExeption(courseName);
   }
   public CoursePage readCoursesAndFindLastStarted(){
@@ -65,7 +71,7 @@ public class MainPage extends AbsBasePage{
                 .perform();
 
     }
-    return new CoursePage(driver);
+    return coursePage;
 
   }
 

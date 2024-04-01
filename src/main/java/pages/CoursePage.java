@@ -1,5 +1,6 @@
 package pages;
 
+import com.google.inject.Inject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
 import org.junit.jupiter.api.Assertions;
@@ -9,11 +10,15 @@ import org.openqa.selenium.WebElement;
 
 import java.time.LocalDate;
 
-public class CoursePage extends AbsBasePage{
+public class CoursePage extends AbsBasePage<CoursePage>{
   private Logger logger = (Logger) LogManager.getLogger(CoursePage.class);
+
+  @Inject
   public CoursePage(WebDriver driver) {
     super(driver);
-  }
+ }
+  //@Inject  public CoursePage(WebDriver driver) {    super(driver);  }
+
   public void checkTitle(String courseName){
     WebElement element = driver.findElement(By.xpath("//h1"));
     Assertions.assertEquals(courseName,element.getText());
