@@ -23,9 +23,9 @@ public class HWSeleniumTest {
   private WebDriver driver;
 
 
-  @Page
+  @Inject
   private MainPage mainPage;
-  @Page
+  @Inject
   private CoursePage coursePage;
 
   /*Необходимо создать проект в Maven'e и реализовать:

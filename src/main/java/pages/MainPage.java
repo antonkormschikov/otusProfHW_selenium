@@ -19,12 +19,12 @@ import java.util.*;
 import java.util.stream.Stream;
 
 public class MainPage extends AbsBasePage<MainPage>{
+@Driver
+private WebDriver driver;
 
-
-  public MainPage(WebDriver driver) {
-    super(driver);
-  }
-  @Page
+ //public MainPage(WebDriver driver) {    super(driver);  }
+  //@Inject  private MainPage mainPage;
+  @Inject
   private CoursePage coursePage;
 
   private Logger logger = (Logger) LogManager.getLogger(MainPage.class);

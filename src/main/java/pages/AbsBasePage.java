@@ -8,11 +8,11 @@ import org.openqa.selenium.WebDriver;
 import utils.AbsBaseUtils;
 import java.time.LocalDate;
 
-public abstract class AbsBasePage<T> extends AbsBaseUtils {
+public abstract class AbsBasePage<T> {
 
-  public AbsBasePage(WebDriver driver) {
-    super(driver);
-  }
+ //public AbsBasePage(WebDriver driver) {    super(driver);  }
+ @Driver
+ private WebDriver driver;
   private Logger logger = (Logger) LogManager.getLogger(AbsBasePage.class);
   private final String baseUrl=System.getProperty("base.url","https://otus.ru");
   public void open(String path) {

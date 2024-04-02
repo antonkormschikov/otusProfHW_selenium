@@ -13,12 +13,11 @@ import java.time.LocalDate;
 
 public class CoursePage extends AbsBasePage<CoursePage>{
   private Logger logger = (Logger) LogManager.getLogger(CoursePage.class);
+  @Driver
+  private WebDriver driver;
 
+//public CoursePage(WebDriver driver) {    super(driver); }
 
-  public CoursePage(WebDriver driver) {
-    super(driver);
- }
-  //@Inject  public CoursePage(WebDriver driver) {    super(driver);  }
 
   public void checkTitle(String courseName){
     WebElement element = driver.findElement(By.xpath("//h1"));

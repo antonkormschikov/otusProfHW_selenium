@@ -17,10 +17,10 @@ public class PageFactory{
     public <T> Object newPage(WebDriver driver, String clazz) {
         switch (clazz){
             case "MainPage":{
-                return new MainPage(driver);
+                return new MainPage();
             }
             case "CourcePage":{
-                return new CoursePage(driver);
+                return new CoursePage();
             }
             default:{
                 return null;

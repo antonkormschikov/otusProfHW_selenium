@@ -18,7 +18,7 @@ import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
+public class UIExtensions implements BeforeEachCallback, AfterEachCallback, BeforeAllCallback {
   private WebDriver driver;
 
 
@@ -36,7 +36,7 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
     }
 
 
-    Set<Field> fildsToInjectPage = getAnnotatedFields(Page.class, extensionContext);
+    /*Set<Field> fildsToInjectPage = getAnnotatedFields(Page.class, extensionContext);
        String clname =null;
      var object = new PageFactory().newPage(driver,"MainPage");
     for (Field field: fildsToInjectPage) {
@@ -45,7 +45,7 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
         field.setAccessible(true);
         field.set(extensionContext.getTestInstance().get(),object);
       }
-    }
+    }*/
 
   }
 
@@ -68,4 +68,8 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
     }
   }
 
+    @Override
+    public void beforeAll(ExtensionContext extensionContext) throws Exception {
+        Guice.createInjector(new GuicePagesModule());
+    }
 }
