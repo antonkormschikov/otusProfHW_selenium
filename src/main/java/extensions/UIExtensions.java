@@ -36,16 +36,16 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback, Befo
     }
 
 
-    /*Set<Field> fildsToInjectPage = getAnnotatedFields(Page.class, extensionContext);
+    Set<Field> fildsToInjectPage = getAnnotatedFields(Page.class, extensionContext);
        String clname =null;
-     var object = new PageFactory().newPage(driver,"MainPage");
+     //var object = new PageFactory().newPage(driver,);
     for (Field field: fildsToInjectPage) {
-        var object = new PageFactory().newPage(driver,field.getType().getSimpleName());
-    if (field.getType().getName().equals(object.getClass().getName())){
+        var object = new PageFactory().newPage(driver,field.getType());
+   // if (field.getType().getName().equals(object.getClass().getName())){
         field.setAccessible(true);
         field.set(extensionContext.getTestInstance().get(),object);
-      }
-    }*/
+    //  }
+    }
 
   }
 

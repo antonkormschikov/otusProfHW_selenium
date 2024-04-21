@@ -1,6 +1,7 @@
 package pages;
 
 import annotations.Driver;
+import annotations.Page;
 import com.google.inject.Inject;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
@@ -11,12 +12,14 @@ import org.openqa.selenium.WebElement;
 
 import java.time.LocalDate;
 
-public class CoursePage extends AbsBasePage<CoursePage>{
+public class CoursePage extends AbsBasePage{
   private Logger logger = (Logger) LogManager.getLogger(CoursePage.class);
-  @Driver
-  private WebDriver driver;
 
-//public CoursePage(WebDriver driver) {    super(driver); }
+  public CoursePage(WebDriver driver) {
+    super(driver);
+  }
+  @Page
+  private MainPage mainPage;
 
 
   public void checkTitle(String courseName){

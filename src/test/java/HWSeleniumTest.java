@@ -23,9 +23,10 @@ public class HWSeleniumTest {
   private WebDriver driver;
 
 
-  @Inject
+  @Page
   private MainPage mainPage;
-  @Inject
+
+  @Page
   private CoursePage coursePage;
 
   /*Необходимо создать проект в Maven'e и реализовать:
@@ -42,8 +43,8 @@ public class HWSeleniumTest {
 //    MainPage mainPage = new MainPage(driver);
 
   mainPage.open("/");
-  //  mainPage.findCourse("Apache Kafka")
-         //   .checkTitle("Apache Kafka");
+  mainPage.findCourse("Machine Learning")
+          .checkTitle("Machine Learning");
   }
 
  // @Test

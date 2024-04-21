@@ -13,7 +13,7 @@ public class ChromeConfigure implements IBrowserSettings{
 
   @Override
     public WebDriver configure() {
-    WebDriverManager.chromedriver().setup();
+    WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
     ChromeOptions chromeOptions = new ChromeOptions();
     //chromeOptions.addArguments("--ignore-certificate-errors");
     chromeOptions.addArguments("--start-maximized");

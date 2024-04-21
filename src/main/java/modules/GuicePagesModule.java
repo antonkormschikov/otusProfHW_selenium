@@ -9,15 +9,15 @@ import pages.CoursePage;
 import pages.MainPage;
 
 public class GuicePagesModule extends AbstractModule{
-
+    @Driver
+    WebDriver driver;
     @Provides
     @Singleton
-    public MainPage getMainPage(){
-        return new MainPage();
+    public MainPage getMainPage(){ return new MainPage(driver);
     }
     @Provides
     @Singleton
     public CoursePage getCourcePage(){
-        return new CoursePage();
+        return new CoursePage(driver);
     }
 }

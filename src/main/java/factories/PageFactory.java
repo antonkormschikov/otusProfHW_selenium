@@ -7,6 +7,7 @@ import pages.CoursePage;
 import pages.MainPage;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.Type;
 
 public class PageFactory{
     public PageFactory(){
@@ -14,13 +15,14 @@ public class PageFactory{
     }
 
 
-    public <T> Object newPage(WebDriver driver, String clazz) {
-        switch (clazz){
-            case "MainPage":{
-                return new MainPage();
+    public <T> Object newPage(WebDriver driver, Type type) {
+        String i = type.getTypeName().toString();
+        switch (i){
+            case "pages.MainPage":{
+                return new MainPage(driver);
             }
-            case "CourcePage":{
-                return new CoursePage();
+            case "pages.CourcePage":{
+                return new CoursePage(driver);
             }
             default:{
                 return null;

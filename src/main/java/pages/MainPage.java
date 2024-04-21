@@ -4,6 +4,7 @@ import annotations.Driver;
 import annotations.Page;
 import com.google.common.util.concurrent.ClosingFuture;
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 import exeptions.NoFoundCourseExeption;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,13 +19,13 @@ import java.time.LocalDate;
 import java.util.*;
 import java.util.stream.Stream;
 
-public class MainPage extends AbsBasePage<MainPage>{
-@Driver
-private WebDriver driver;
+public class MainPage extends AbsBasePage{
 
- //public MainPage(WebDriver driver) {    super(driver);  }
-  //@Inject  private MainPage mainPage;
-  @Inject
+    public MainPage(WebDriver driver) {
+     super(driver);
+    }
+
+  @Page
   private CoursePage coursePage;
 
   private Logger logger = (Logger) LogManager.getLogger(MainPage.class);

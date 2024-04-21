@@ -8,19 +8,19 @@ import org.openqa.selenium.WebDriver;
 import utils.AbsBaseUtils;
 import java.time.LocalDate;
 
-public abstract class AbsBasePage<T> {
+public abstract class AbsBasePage<T> extends AbsBaseUtils{
 
- //public AbsBasePage(WebDriver driver) {    super(driver);  }
- @Driver
- private WebDriver driver;
-  private Logger logger = (Logger) LogManager.getLogger(AbsBasePage.class);
-  private final String baseUrl=System.getProperty("base.url","https://otus.ru");
-  public void open(String path) {
-    String a=baseUrl+path;
-    driver.get(a);
+ public AbsBasePage(WebDriver driver) { super(driver);
 
   }
+    private Logger logger = (Logger) LogManager.getLogger(AbsBasePage.class);
+    private final String baseUrl=System.getProperty("base.url","https://otus.ru");
 
+    public T open (String path) {
+        String a = baseUrl + path;
+        driver.get(a);
+        return (T)this;
+    }
   public LocalDate convertDate(String srcDate){
     String[] monthNames = { "января", "февраля", "марта", "апреля", "мая", "июня", "июля", "августа", "сентября", "октября", "ноября", "декабря" };
     int month=0;
