@@ -45,6 +45,7 @@ public class MainPage extends AbsBasePage{
       return new CoursePage(driver);
     }throw new NoFoundCourseExeption(courseName);
   }
+
   public CoursePage readCoursesAndFindLastStarted(){
     String link="";
     String dateElement="";

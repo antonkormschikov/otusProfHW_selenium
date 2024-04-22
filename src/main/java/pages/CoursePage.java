@@ -1,6 +1,5 @@
 package pages;
 
-import annotations.Driver;
 import annotations.Page;
 import extensions.UIExtensions;
 import org.apache.logging.log4j.LogManager;
@@ -19,7 +18,6 @@ public class CoursePage extends AbsBasePage<CoursePage> {
   public CoursePage(WebDriver driver) {super(driver);}
   @Page
   private MainPage mainPage;
-
 
   public void checkTitle(String courseName){
     WebElement element = driver.findElement(By.xpath("//h1"));
