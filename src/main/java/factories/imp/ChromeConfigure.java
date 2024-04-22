@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 
 public class ChromeConfigure implements IBrowserSettings{
-  private String browserVersion= System.getProperty("browser.version");
+  private String browserVersion= System.getProperty("browser.version","123.0");
 
 
   @Override

@@ -5,7 +5,6 @@ import factories.imp.ChromeConfigure;
 import factories.imp.FireFoxConfigure;
 import listeners.OnClickOnListener;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 
 

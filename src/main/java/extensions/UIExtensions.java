@@ -1,14 +1,10 @@
 package extensions;
 import annotations.Driver;
 import annotations.Page;
-import com.google.inject.Guice;
-import com.google.inject.Module;
+
 import factories.PageFactory;
 import factories.WebDriverFactory;
-
-import modules.GuicePagesModule;
 import org.junit.jupiter.api.extension.AfterEachCallback;
-import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
@@ -18,12 +14,12 @@ import java.lang.reflect.Field;
 import java.util.HashSet;
 import java.util.Set;
 
-public class UIExtensions implements BeforeEachCallback, AfterEachCallback, BeforeAllCallback {
+public class UIExtensions implements BeforeEachCallback, AfterEachCallback {
   private WebDriver driver;
 
 
 
-   @Override
+  @Override
     public void beforeEach(ExtensionContext extensionContext) throws Exception {
 
     driver = new WebDriverFactory().create();
@@ -37,14 +33,11 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback, Befo
 
 
     Set<Field> fildsToInjectPage = getAnnotatedFields(Page.class, extensionContext);
-       String clname =null;
-     //var object = new PageFactory().newPage(driver,);
+    String clname =null;
     for (Field field: fildsToInjectPage) {
-        var object = new PageFactory().newPage(driver,field.getType());
-   // if (field.getType().getName().equals(object.getClass().getName())){
-        field.setAccessible(true);
-        field.set(extensionContext.getTestInstance().get(),object);
-    //  }
+      var object = new PageFactory().newPage(driver,field.getType());
+      field.setAccessible(true);
+      field.set(extensionContext.getTestInstance().get(),object);
     }
 
   }
@@ -68,8 +61,5 @@ public class UIExtensions implements BeforeEachCallback, AfterEachCallback, Befo
     }
   }
 
-    @Override
-    public void beforeAll(ExtensionContext extensionContext) throws Exception {
-        Guice.createInjector(new GuicePagesModule());
-    }
+
 }

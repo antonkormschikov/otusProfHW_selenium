@@ -3,12 +3,12 @@ package pages;
 import annotations.Driver;
 import annotations.Page;
 import com.google.common.util.concurrent.ClosingFuture;
-import com.google.inject.Inject;
-import com.google.inject.Singleton;
 import exeptions.NoFoundCourseExeption;
 
+import extensions.UIExtensions;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.core.Logger;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,13 +17,13 @@ import utils.LinkAndDate;
 
 import java.time.LocalDate;
 import java.util.*;
-import java.util.stream.Stream;
 
+@ExtendWith(UIExtensions.class)
 public class MainPage extends AbsBasePage{
 
-    public MainPage(WebDriver driver) {
-     super(driver);
-    }
+  public MainPage(WebDriver driver) {
+    super(driver);
+  }
 
   @Page
   private CoursePage coursePage;
@@ -42,8 +42,7 @@ public class MainPage extends AbsBasePage{
               .click()
               .build()
               .perform();
-
-      return coursePage;
+      return new CoursePage(driver);
     }throw new NoFoundCourseExeption(courseName);
   }
   public CoursePage readCoursesAndFindLastStarted(){
@@ -75,12 +74,7 @@ public class MainPage extends AbsBasePage{
                 .perform();
 
     }
-    return coursePage;
+    return new CoursePage(driver);
 
   }
-
-
-
-
-
 }

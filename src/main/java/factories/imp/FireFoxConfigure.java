@@ -10,14 +10,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class FireFoxConfigure implements IBrowserSettings{
-  private String browserVersion= System.getProperty("browser.version");
+  private String browserVersion= System.getProperty("browser.version","124");
   @Override
     public WebDriver configure() {
-    WebDriverManager.firefoxdriver().setup();
+    WebDriverManager.firefoxdriver().driverVersion(browserVersion).setup();
     FirefoxOptions firefoxOptions = new FirefoxOptions();
     firefoxOptions.addArguments("--start-maximized");
     firefoxOptions.addArguments("--homepage-about:blank");
-    firefoxOptions.addArguments("--remote-allow-origins=*");
+    //firefoxOptions.addArguments("--remote-allow-origins=*");
 
 
     return new FirefoxDriver(firefoxOptions);
