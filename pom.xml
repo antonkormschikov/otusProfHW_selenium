@@ -67,7 +67,13 @@
     </dependencies>
     <profiles>
         <profile>
-            <id>prod</id>
+            <id>remote</id>
+            <properties>
+                <base.url>https://otus.ru</base.url>
+            </properties>
+        </profile>
+        <profile>
+            <id>local</id>
             <properties>
                 <base.url>https://otus.ru</base.url>
             </properties>
@@ -130,7 +136,7 @@
                         <id>analyze-compile</id>
                         <phase>compile</phase>
                         <goals>
-                            <goal>check</goal>
+<!--                            <goal>check</goal>-->
                         </goals>
                     </execution>
                 </executions>

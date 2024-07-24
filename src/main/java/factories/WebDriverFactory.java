@@ -7,13 +7,15 @@ import listeners.OnClickOnListener;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringDecorator;
 
+import java.net.MalformedURLException;
+
 
 public class WebDriverFactory {
   private String browserName = System.getProperty("browser","chrome").toLowerCase();
 
 
 
-  public WebDriver create() {
+  public WebDriver create() throws MalformedURLException {
     switch (browserName){
       case "chrome":{
         return new EventFiringDecorator<>(new OnClickOnListener()).decorate(new ChromeConfigure().configure());
