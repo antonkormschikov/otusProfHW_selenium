@@ -19,17 +19,15 @@ public class ChromeConfigure implements IBrowserSettings{
 
   @Override
     public WebDriver configure() throws MalformedURLException {
-    if (System.getProperty("profile.id","local").toString()=="remote") {
+    if (System.getProperty("mode","local").toString().equals("remote")) {
       ChromeOptions chromeOptions = new ChromeOptions();
       chromeOptions.setCapability("browserVersion", "123.0");
       chromeOptions.setCapability("selenoid:options", new HashMap<String, Object>() {{
         /* How to add test badge */
         put("name", "Test badge...");
-
-
         /* How to set session timeout */
         put("sessionTimeout", "15m");
-System.out.println("remote mod");
+System.out.println("remote mode");
         /* How to set timezone */
         put("env", new ArrayList<String>() {{
           add("TZ=UTC");
@@ -46,8 +44,7 @@ System.out.println("remote mod");
       return  new RemoteWebDriver(new URL("http://127.0.0.1/wd/hub"), chromeOptions);
     } else {
 
-
-      System.out.println("local  mod");
+      System.out.println("local  mode");
       WebDriverManager.chromedriver().driverVersion(browserVersion).setup();
       ChromeOptions chromeOptions = new ChromeOptions();
       //chromeOptions.addArguments("--ignore-certificate-errors");

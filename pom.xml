@@ -26,6 +26,7 @@
         <log4j-core.version>2.17.1</log4j-core.version>
         <log4j-slf4j2.version>2.20.0</log4j-slf4j2.version>
         <reflections.version>0.9.12</reflections.version>
+        <mode></mode>
 
 
     </properties>
@@ -70,15 +71,16 @@
             <id>remote</id>
             <properties>
                 <base.url>https://otus.ru</base.url>
+                <mode>remote</mode>
             </properties>
         </profile>
         <profile>
             <id>local</id>
             <properties>
                 <base.url>https://otus.ru</base.url>
+                <mode>local</mode>
             </properties>
         </profile>
-
     </profiles>
     <build>
         <plugins>
@@ -91,8 +93,10 @@
                         <base.url>${base.url}</base.url>
                         <browser>${browser}</browser>
                         <browser.version>${browser.version}</browser.version>
+                        <mode>${mode}</mode>
                     </systemProperties>
                     <systemPropertyVariables>
+                   <!--     <profileId>${project.activeProfiles[0].id}</profileId>-->
                     <configurationParameters>
                         junit.jupiter.execution.parallel.enabled=true
                         junit.jupiter.execution.parallel.mode.default=concurrent
